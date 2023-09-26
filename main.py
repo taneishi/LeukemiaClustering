@@ -33,7 +33,7 @@ def ward(x, y, i, D, C):
                 C[i] * t * D[x, y] * D[x, y])
     
 def main():
-    df = pd.read_csv('data/Golub_dataset_train.csv', index_col=[0,1])
+    df = pd.read_csv('data/Golub_dataset_train.csv', index_col=0, header=[0, 1])
     X = df.values
 
     # Distance matrix between vectors.
