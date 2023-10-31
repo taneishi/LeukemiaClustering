@@ -51,8 +51,7 @@ d_{\mathrm{Ward}}(X_i \cup X_i, X_j) = \Big\{\frac{2}{3}d_{\mathrm{Euclid}}(X_i,
 it can be seen that Ward's definition is a natural extension of the Euclidean distance.
 
 After continuing the *agglomerative* operation of constructing a new cluster from the vectors or clusters in the nearest neighborhood using the linkage, for the $(m-1)$th time we obtain a cluster $C_{2m-1}$ containing all vectors hierarchically.
-This is the basic idea of *hierarchical clustering*.
-Since the resulting cluster is hierarchical, it is known as *hierarchical clustering*.
+This is the basic idea and is known as *hierarchical clustering* since the results are hierarchical. 
 
 The actual results computed on the *Golub et al.* dataset are shown in Figure 1.
 The clustering result can be represented as a *dendrogram* or a *phylogenetic tree* due to its hierarchical structure.
