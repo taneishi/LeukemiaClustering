@@ -8,7 +8,7 @@ Identification of the proteins associated with the disease, the so-called *disea
 In the case of CML, this was the tyrosine kinase inhibitor *imatinib*, an early example of a *molecularly targeted drug*.
 
 In general, when genotypes based on gene expressions share certain features with the patient's phenotypes, these features are considered to be the representation of the disease-associated genes.
-Based on this idea, *Golub et al.* proposed in 1999 to classify diseases based on gene expression levels as features[1].
+Based on this idea, *Golub et al.* proposed in 1999 to classify diseases based on gene expression levels as features[Golub].
 
 The process of determining the association between gene expressions and phenotypes is essentially *unsupervised* or *self-supervised learning*.
 Here, we use one of the basic methods of unsupervised learning, *clustering*, to classify the phenotypes of patients based on gene expression levels.
@@ -37,7 +37,7 @@ d_{\mathrm{Euclid}}(X_i, X_j) = \sqrt{\sum_{k=1}^n (x_{i,k} - x_{j,k})^2}.
 After constructing the first cluster, the distances between vectors that do not belong to the cluster and the cluster are calculated, and a new cluster $C_{m+2}$ is constructed from the two vectors or the vector and the cluster in the nearest neighborhood.
 In this process, we need to define a *linkage* for a set of clusters as an extension of metric for a vector space.
 
-We use the definition by *Ward* for linkage[2].
+We use the definition by *Ward* for linkage[Ward].
 That is, when we newly construct a cluster $C_i \cup C_j$ from clusters $C_i$ and $C_j$, with $|C_i|$ as the number of elements i.e. vectors in the cluster $C_i$, we define the linkage between $C_i \cup C_j$ and an existing cluster $C_k$ as
 ```math
 d_{\mathrm{Ward}}(C_i \cup C_j, C_k) = \Big\{\frac{|C_i|+|C_k|}{t}d_{\mathrm{Ward}}(C_i, C_k)^2 + \frac{|C_j|+|C_k|}{t}d_{\mathrm{Ward}}(C_j, C_k)^2 - \frac{|C_k|}{t}d_{\mathrm{Ward}}(C_i, C_j)^2\Big\}^{\frac{1}{2}}
@@ -145,5 +145,5 @@ for k in range(X.shape[0] - 1):
 
 ## References
 
-- [1] T.R. Golub et al., *Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring*, **Science**, 286(5439):pp531-7, 15 Oct 1999.
-- [2] J.H. Ward, *Hierarchical Grouping to Optimize an Objective Function*, **J Am Stat Assoc**, 58, 236–244, 1963.
+- [Golub] T.R. Golub et al., *Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring*, **Science**, 286(5439):pp531-7, 15 Oct 1999.
+- [Ward] J.H. Ward, *Hierarchical Grouping to Optimize an Objective Function*, **J Am Stat Assoc**, 58, 236–244, 1963.
