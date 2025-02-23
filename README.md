@@ -143,7 +143,5 @@ for k in range(X.shape[0] - 1):
     del C[x], C[y]
 ```
 
-## References
-
 [^Golub]: T.R. Golub et al., *Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring*, **Science**, 286(5439):pp531-7, 15 Oct 1999.
 [^Ward]: J.H. Ward, *Hierarchical Grouping to Optimize an Objective Function*, **J Am Stat Assoc**, 58, 236–244, 1963.
