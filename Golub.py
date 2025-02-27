@@ -6,21 +6,6 @@ from matplotlib.patches import Rectangle
 # For plotting.
 import scipy.cluster
 
-def plot_pca(df):
-    U, S, Vt = np.linalg.svd(df, full_matrices=False)
-    T = U * S
-
-    plt.figure(figsize=(4, 4))
-    for i, (label, color) in enumerate(zip(['ALL', 'AML'], ['red', 'green'])):
-        index = df.index.str.startswith(label)
-        plt.scatter(T[index, 0], T[index, 1], label=label, marker=f'{i+1}', linewidth=0.8, color=color)
-    plt.axline([0, 0], [1, 0], linestyle='--', linewidth=0.8, color='gray')
-    plt.axline([0, 0], [0, 1], linestyle='--', linewidth=0.8, color='gray')
-    plt.xlim(-30, 30)
-    plt.ylim(-30, 30)
-    plt.legend()
-    plt.savefig('figure/Golub_train.png', dpi=100)
-
 def plot_dendrogram(df, Z):
     n_samples = df.shape[0]
 
@@ -78,7 +63,7 @@ class DistanceMatrix(object):
         if i > j:
             i, j = j, i
         self.matrix[i, j] = value
-        
+
     def __getitem__(self, key):
         i, j = key
         if i == j:
@@ -116,28 +101,28 @@ def clustering(X):
 
         # Create a new cluster from x and y.
         C[new_cluster] = C[x] + C[y]
-        
+
         # Record the new cluster.
         Z[k, 0] = x
         Z[k, 1] = y
         Z[k, 2] = D[x, y]
         Z[k, 3] = C[X.shape[0] + k]
-        
+
         # Update the distance matrix.
         for i in C.keys():
             if i < X.shape[0] + k:
                 D[i, X.shape[0] + k] = ward(x, y, i, D, C)
-                    
+
         # Clusters x and y are included in the new cluster.
         del C[x], C[y]
-        
+
     # Sort Z by cluster distances.
     Z = Z[np.argsort(Z[:, 2])]
 
     return Z
 
 def main():
-    train = pd.read_csv('data/Golub_train.csv', index_col=0, header=[0, 1])
+    train = pd.read_csv('data/Golub.csv', index_col=0, header=[0, 1])
 
     print('Training set shape', train.shape)
 
@@ -150,8 +135,6 @@ def main():
     print(Z)
 
     plot_dendrogram(train, Z)
-
-    plot_pca(train)
 
 if __name__ == '__main__':
     main()
