@@ -35,7 +35,7 @@ d_{\mathrm{Ward}}(C_i \cup C_j, C_k) = \Big\{\frac{|C_i|+|C_k|}{t}d_{\mathrm{War
 where $t = |C_i| + |C_j| + |C_k|$. When the objects of computing linkage are vectors, we define $|X_i| = 1$, $d_{\mathrm{Ward}}(X_i, X_j) = d_{\mathrm{Euclid}}(X_i, X_j)$ for vectors $X_i$ and $X_j$. In other words, we can generalize the metric of vectors and clusters by considering a vector as the smallest cluster consisting of a single element. In fact, assigning $X_i$ for $C_i$ and $C_j$, $X_j$ for $C_k$ in the definition of Ward linkage,
 
 ```math
-d_{\mathrm{Ward}}(X_i \cup X_i, X_j) = \Big\{\frac{2}{3}d_{\mathrm{Euclid}}(X_i, X_j)^2 + \frac{2}{3}d_{\mathrm{Euclid}}(X_i, X_j)^2 - \frac {1}{3}d_{\mathrm{Euclid}}(X_i, X_i)^2\Big\}^{\frac{1}{2}} = d_{\mathrm{Euclid}}(X_i, X_j),
+d_{\mathrm{Ward}}(X_i \cup X_i, X_j) = \Big\{\frac{2}{3}d_{\mathrm{Euclid}}(X_i, X_j)^2 + \frac{2}{3}d_{\mathrm{Euclid}}(X_i, X_j)^2 - \frac {1}{3}d_{\mathrm{Euclid}}(X_i, X_i)^2\Big\}^{\frac{1}{2}} = d_{\mathrm{Euclid}}(X_i, X_j).
 ```
 
 We see that the definition of Ward linkage is a natural extension of the Euclidean distance.
@@ -112,24 +112,23 @@ for k in range(X.shape[0] - 1):
 
 ### Classification of Phenotypes by Genotypes
 
-The actual results computed on the *Golub et al.* dataset are shown in Figure 1.
-The clustering result can be represented as a *dendrogram* or a *phylogenetic tree* due to its hierarchical structure.
+The results computed on the *Golub et al.* dataset are shown in Figure 1. The clustering result can be represented as a *phylogenetic tree* or *dendrogram* due to its hierarchical structure.
 
-![Dendrogram representation of the results of hierarchical clustering by gene expression levels for each patient.](figure/Golub_Clustering.png)
+![dendrogram.](figure/Golub_Clustering.png)
 
 **Figure 1. Dendrogram representation of the results of hierarchical clustering by gene expression levels for each patient.**
 
-If we take three clusters with a threshold distance of 70.0, shown as a dashed line in the Figure 1, we can almost clearly classify the AML T-cell/B-cell and AML phenotypes, despite unsupervised learning without using phenotypes as labels.
+If we take three clusters with a threshold distance of 70.0, shown as a dashed line in the Figure 1, we can almost clearly classify the ALL T-cell/B-cell and AML phenotypes, despite unsupervised learning that doese not use phenotypes as labels.
 
 ### Comparison with a Linear Method
 
-The results of projecting the vector representations of the genotypes into two dimensions using *principal component analysis*, PCA, which is an unsupervised learning as well as hierarchical clustering, are shown in Figure 2.
+As a comparison, the results of projecting the vector representations of the genotypes into two dimensions using *principal component analysis*, PCA, which is an unsupervised learning as well as hierarchical clustering, are shown in Figure 2.
 
-![Projection with PCA](figure/Golub_PCA.png)
+![projection](figure/Golub_PCA.png)
 
-**Figure 2. Projection of the vectors of genotypes with PCA.**
+**Figure 2. Projection of the vectors of gene expression levels by PCA into two dimensions.**
 
-Although PCA, a linear method, can be used to classify ALL and AML groups, the discrimination between T-cell and B-cell groups of ALL is unclear.
+Although PCA, a linear method, can be used to classify ALL and AML patients, the discrimination between T-cell and B-cell patients of ALL is unclear.
 
 [^Golub]: T.R. Golub et al., *Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring*, **Science**, 286(5439):pp531-7, 15 Oct 1999.
 [^Ward]: J.H. Ward, *Hierarchical Grouping to Optimize an Objective Function*, **J Am Stat Assoc**, 58, 236–244, 1963.
